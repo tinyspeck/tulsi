@@ -107,7 +107,7 @@ def _BEPTextFileExitCleanup(bep_file_path, exported_environ):
     return
   try:
     os.remove(bep_file_path)
-    os.environ.remove(exported_environ)
+    del os.environ[exported_environ]
   except OSError as e:
     _PrintXcodeWarning('Failed to remove BEP file from %s. Error: %s' %
                        (bep_file_path, e.strerror))
